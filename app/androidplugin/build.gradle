@@ -25,4 +25,5 @@ android {
 }
 
 dependencies {
+    compileOnly files('./libs/unity-classes.jar')
 }
