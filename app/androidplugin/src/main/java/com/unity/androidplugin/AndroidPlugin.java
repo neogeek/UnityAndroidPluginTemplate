@@ -1,18 +1,20 @@
 package com.unity.androidplugin;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
 public class AndroidPlugin {
 
-    private Context context;
+    private Activity activity;
 
     public AndroidPlugin(Context context) {
-        this.context = context;
+        this.activity = (Activity) context;
     }
 
     public void ToastMakeText(String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        activity.runOnUiThread(() -> {
+            Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+        });
     }
-
 }
